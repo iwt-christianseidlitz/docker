@@ -1,8 +1,10 @@
 FROM amazon/aws-cli
 
+RUN yum install -y zip gzip tar zlib libicu libcurl
+
 # default dotnet and powershell install
 RUN curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin \
-    && /root/.dotnet/dotnet tool install --global PowerShell
+  && /root/.dotnet/dotnet tool install --global PowerShell
 
 # export PATH=/root/.dotnet:/root/.dotnet/tools:$PATH
 ENV PATH="/root/.dotnet:/root/.dotnet/tools:${PATH}"
